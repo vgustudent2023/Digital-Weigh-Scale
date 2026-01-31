@@ -30,7 +30,12 @@ The system is built with an Arduino, a **load cell**, the **HX711 24-bit ADC**, 
 - Load cell (e.g., 1–5 kg) + **HX711** module
 - 4-digit 7-segment display module using **74HC595** (common 3-wire modules)
 - Wires + stable mounting platform
-
+<p align="center">
+  <img src="Media/Internal.jpg" width="500" />
+  <img src="Media/Front.jpg" width="500"/>
+  <img src="Media/Loadcell_2.jpg" width="300" />
+</p>
+  
 ---
 
 ## Wiring
