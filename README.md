@@ -168,8 +168,3 @@ The sketch applies the new factor at runtime, but it **won’t persist after res
   Example: `c 205`
 
 ---
-
-## License
-
-This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.  
-See the `LICENSE` file for details.
