@@ -3,6 +3,9 @@
 A simple **digital weighing scale** built with an Arduino, a **load cell + HX711 24-bit ADC**, and a **4-digit 7-segment LED display** driven by **74HC595** shift registers.  
 It reads weight in **grams**, prints it to **Serial**, and shows it on the 4-digit display.
 
+<p align="center">
+  <img src="Media/Model.jpg">
+</p>
 ---
 
 ## Features
