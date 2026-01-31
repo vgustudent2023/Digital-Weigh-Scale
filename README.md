@@ -1,12 +1,14 @@
-# Digital Weigh Scale
+<h2 align="center"> Digital Weigh Scale</h2>
 
-A simple **digital weighing scale** built with an Arduino, a **load cell + HX711 24-bit ADC**, and a **4-digit 7-segment LED display** driven by **74HC595** shift registers.  
-It reads weight in **grams**, prints it to **Serial**, and shows it on the 4-digit display.
+## Introduction
+  
+The **digital weighing scale** was proposed by Dr. Vo Bich Hien as a mini project for the Electrical Instrumentation and Measurement class of ECE2024, in that it gave us hands-on experience and a broader insights in the field of measurement.
+
+This is a simple **digital weighing scale** we built with an Arduino using a **load cell** sensor, **24-bit HX711 Analog-to-Digital Converter** and a **74HC585** 4-digit 7-segment LED display.
 
 <p align="center">
-  <img src="Media/Model.jpg">
+  <img src="Media/Model.jpg" width = "800">
 </p>
----
 
 ## Features
 
