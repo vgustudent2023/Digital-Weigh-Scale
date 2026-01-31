@@ -7,7 +7,7 @@ This **digital weigh scale** was proposed by Dr. Vo Bich Hien as a mini project 
 The system is built with an Arduino, a **load cell**, the **HX711 24-bit ADC**, and a **4-digit 7-segment display** driven by **74HC595** shift registers.
 
 <p align="center">
-  <img src="Media/Model.jpg" alt="Digital weigh scale model" width="700">
+  <img src="Media/Model.jpg" width="700">
 </p>
 
 ## Features
@@ -18,6 +18,9 @@ The system is built with an Arduino, a **load cell**, the **HX711 24-bit ADC**, 
 - Serial commands:
   - `t` → tare (zero the scale)
   - `c <grams>` → calibrate using a known mass
+<p align="center">
+  <img src="Media/Number.jpg" width="500">
+</p>
 
 ---
 
@@ -31,6 +34,10 @@ The system is built with an Arduino, a **load cell**, the **HX711 24-bit ADC**, 
 ---
 
 ## Wiring
+
+<p align="center">
+  <img src="Media/Schematic.png" width="500">
+</p>
 
 ### HX711 → Arduino
 
