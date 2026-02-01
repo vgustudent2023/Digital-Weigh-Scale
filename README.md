@@ -69,6 +69,22 @@ This mini project focuses on:
 
 ### 2.1 Functional Block Diagram
 
+```
+Force / Weight
+|
+▼
+Load Cell (Wheatstone Bridge)
+| (mV/V differential signal)
+▼
+HX711 24-bit ADC + PGA
+| (digital data)
+▼
+Arduino Uno (processing, tare, calibration)
+|------------------> Serial Monitor (g=<value>, commands)
+▼
+4-Digit 7-Segment Display (74HC595 shift registers)
+```
+
 
 ### 2.2 Key Functions
 
