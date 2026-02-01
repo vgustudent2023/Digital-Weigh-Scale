@@ -168,22 +168,27 @@ The firmware uses the following constructor mappings:
 
 ### 4.4 Mechanical Construction
 
-The platform is assembled using acrylic plates and a bar-type load cell mounted between them. The HX711 module is placed near the load cell to reduce signal wiring length. The enclosure houses the Arduino and power wiring.
+The mechanical structure is designed to ensure that the applied load produces a repeatable bending deformation on the bar-type load cell. The load cell is mounted between two acrylic plates:
+
+- The **bottom plate** acts as a fixed reference.
+- The **top plate** is the weighing platform where external force/weight is applied.
+- **Spacers/standoffs** are used so that the plate does not touch the load cell body except at the mounting points, allowing the beam section to flex properly.
+- The load cell output wires are routed away from moving parts to reduce stress on the cable and minimize measurement drift.
 
 <p align="center">
-  <img src="Media/Loadcell_1.jpg" alt="Side view of load cell assembly" width="850">
-  <br><i>Figure 4. Load cell assembly (side view) and HX711 placement.</i>
+  <img src="Media/load-cell-scale-arduino.jpg" alt="Load cell mounted between plates (real setup)" width="850">
+  <br><i>Figure X. Real load cell mounting between the top and bottom plates.</i>
 </p>
 
 <p align="center">
-  <img src="Media/Loadcell_2.jpg" alt="Top view of load cell assembly" width="850">
-  <br><i>Figure 5. Load cell assembly (top view) with wiring routed to the HX711.</i>
+  <img src="Media/load-cell-setup-scale.jpg" alt="Load cell setup diagram showing spacers and strain gauge region" width="850">
+  <br><i>Figure Y. Recommended load cell mounting layout (spacers + strain gauge region).</i>
 </p>
 
-<p align="center">
-  <img src="Media/Internal.jpg" alt="Internal view showing wiring and Arduino placement" width="850">
-  <br><i>Figure 6. Internal view showing Arduino placement and wiring.</i>
-</p>
+**Notes for stable measurements**
+- Use a rigid base and avoid platform wobble to reduce noise.
+- Ensure the load is applied near the center of the top plate.
+- Avoid tightening screws unevenly (can introduce preload and offset).
 
 ---
 
