@@ -1,22 +1,27 @@
-# Digital Weigh Scale (Arduino + Load Cell + HX711)
-
-**Course:** Electrical Instrumentation and Measurement (ECE2024)  
-**Instructor:** Dr. Vo Bich Hien  
-**Authors:** Nguyen Hoang Long (10223088), Vu Hoang Minh (102240574)
-
-A low-cost digital weighing scale built around a strain-gauge **load cell** and the **HX711 24-bit ADC + PGA**, with weight shown on a **4-digit 7-segment LED module** (74HC595 shift-register driver) and streamed to Serial in real time.
+<h1 align="center">Digital Weigh Scale — Project Report</h1>
 
 <p align="center">
-  <img src="Media/Front.jpg" width="850" alt="Front view of the scale" />
+  <b>Course:</b> Electrical Instrumentation and Measurement<br>
+  <b>Instructor:</b> Dr. Vo Bich Hien
+</p>
+
+<p align="center">
+  <b>Authors:</b><br>
+  Nguyen Hoang Long — ID: 10223088<br>
+  Vu Hoang Minh — ID: 102240574
 </p>
 
 ---
 
 ## Contents
-
-- [Project overview](#project-overview)
-- [Demo](#demo)
-- [Hardware](#hardware)
+- [1. Introduction](#1-introduction)
+- [2. System Overview](#2-system-overview)
+  - [2.1 Functional Blocks](#21-functional-blocks)
+  - [2.2 Features](#22-features)
+- [3. Theory of Operation](#3-theory-of-operation)
+  - [3.1 Load Cell (Wheatstone Bridge)](#31-load-cell-wheatstone-bridge)
+  - [3.2 HX711 24-bit ADC + PGA](#32-hx711-24-bit-adc--pga)
+  - [3.3 4-Digit Display via 74HC595](#33-4-digit-display-via-74hc595)
 - [Wiring](#wiring)
 - [Build notes (mechanical)](#build-notes-mechanical)
 - [Firmware](#firmware)
@@ -30,10 +35,27 @@ A low-cost digital weighing scale built around a strain-gauge **load cell** and 
 
 ---
 
-## Project overview
+## 1. Introduction
 
-### Functional blocks
+This **digital weigh scale** was proposed by Dr. Vo Bich Hien as a mini project for the *Electrical Instrumentation and Measurement* course (ECE2024). In doing this project we gain hands-on experience and a broader perspective of practical measurement systems.
 
+Digital weighing systems are widely used in retail, industrial automation, and laboratories. A common approach is to use a **load cell** (strain-gauge bridge) that converts force into a small differential voltage, then digitize it using a high-resolution ADC such as the **HX711**. The Arduino processes the readings and drives a numeric display.
+
+This mini project focuses on:
+- interfacing a load cell sensor,
+- precision ADC sampling using the HX711,
+- real-time numeric display using a multiplexed 7-segment module,
+- implementing tare and calibration procedures.
+
+<p align="center">
+  <img src="Media/Model.jpg" alt="Digital weigh scale model" width="750">
+</p>
+
+---
+
+## 2. System Overview
+
+### 2.1 Functional blocks
 
 ```
 Force / Weight
@@ -51,8 +73,7 @@ Arduino Uno (processing, tare, calibration)
 4-Digit 7-Segment Display (74HC595 shift registers)
 ```
 
-
-### Features
+### 2.2 Features
 
 - Live weight readout in **grams**.
 - 4-digit display range **0 → 9999 g** (values are clamped).
@@ -63,16 +84,27 @@ Arduino Uno (processing, tare, calibration)
 
 ---
 
-## Demo
+## 3. Theory of Operation
 
-- **Final build (with enclosure):** [Media/Testing.mp4](Media/Testing.mp4)
-- **Prototype (no enclosure):** [Media/Testing 2.mp4](Media/Testing%202.mp4)
+### 3.1 Load Cell (Wheatstone Bridge)
 
-<p align="center">
-  <img src="Media/Model.jpg" width="850" alt="Overall prototype" />
-  <br/>
-  <em>Overall assembled prototype (platform + enclosure + display).</em>
-</p>
+A typical bar-type load cell contains strain gauges configured as a **Wheatstone bridge**. When force is applied, the bridge becomes unbalanced, producing a small differential output voltage (often only millivolts). This signal is too small to measure accurately using the Arduino’s built-in ADC without amplification.
+
+### 3.2 HX711 24-bit ADC + PGA
+
+The HX711 is designed for weigh scales and provides:
+- a low-noise **PGA** (to amplify the bridge signal),
+- a **24-bit ADC** to digitize the amplified signal,
+- a simple two-wire interface: **DOUT (DT)** and **SCK**.
+
+### 3.3 4-Digit Display via 74HC595
+
+The 4-digit 7-segment display is driven through **74HC595 shift registers**, which reduces the Arduino I/O requirement to three lines:
+- Data (DIO)
+- Shift clock (SCLK)
+- Latch clock (RCLK)
+
+The display is refreshed continuously in software (multiplexing).
 
 ---
 
@@ -306,25 +338,3 @@ Two test videos are included in the repository:
 MIT — see [LICENSE](LICENSE).
 
 ---
-
-## Media gallery
-
-All media assets referenced in this README live in `Media/`.
-
-- Prototype / build photos:
-  - `Media/Model.jpg`
-  - `Media/Front.jpg`
-  - `Media/Internal.jpg`
-  - `Media/Loadcell_1.jpg`
-  - `Media/Loadcell_2.jpg`
-  - `Media/running.jpg`
-  - `Media/Number.jpg`
-
-- Wiring + mechanical references:
-  - `Media/Schematic.png`
-  - `Media/load-cell-scale-arduino.jpg`
-  - `Media/load-cell-setup-scale.jpg`
-
-- Videos:
-  - `Media/Testing.mp4`
-  - `Media/Testing 2.mp4`
