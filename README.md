@@ -253,21 +253,15 @@ Because the display is 4 digits, the firmware clamps the output:
 
 This test demonstrates the **final assembled scale**, including the enclosure, display, and platform.
 
-<p align="center">
-  <video src="Media/Testing.mp4" controls width="850"></video>
-  <br>
-</p>
-
+  https://github.com/user-attachments/assets/28ee54c3-7f35-4fcb-858e-3b336b56dafa
+  
 ---
 
 ### Testing 2 — Barebone Prototype (no cardboard enclosure)
 
 This test shows the **barebone build** (electronics and mechanical platform) before enclosing the system.
 
-<p align="center">
-  <video src="Media/Testing 2.mp4" controls width="850"></video>
-  <br>
-</p>
+https://github.com/user-attachments/assets/e0507cb5-721e-42f1-afa9-c01b4bde0f44
 
 ---
 
