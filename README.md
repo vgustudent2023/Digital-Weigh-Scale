@@ -249,18 +249,28 @@ Because the display is 4 digits, the firmware clamps the output:
 
 ## 6. Testing and Results
 
-Testing videos included in the repository:
-- [`Media/Testing.mp4`](Media/Testing.mp4)
-- [`Media/Testing 2.mp4`](Media/Testing%202.mp4)
+### Testing 1 — Final Product (with cardboard enclosure)
 
-Observed behavior:
-- The system responds to load changes and updates the display in real time.
-- The display refresh is stable during operation due to continuous multiplex refresh in the loop.
-- Serial output provides a continuous stream of readings (`g=<value>`) useful for debugging and calibration.
+This test demonstrates the **final assembled scale**, including the enclosure, display, and platform.
 
 <p align="center">
-  <img src="Media/running.jpg" alt="Device running inside enclosure" width="850">
-  <br><i>Figure 8. Device operating during testing (internal view with display active).</i>
+  <video src="Media/Testing.mp4" controls width="850"></video>
+  <br>
+  <i>If the video does not render here, open it directly:</i>
+  <a href="Media/Testing.mp4">Testing 1 (MP4)</a>
+</p>
+
+---
+
+### Testing 2 — Barebone Prototype (no cardboard enclosure)
+
+This test shows the **barebone build** (electronics and mechanical platform) before enclosing the system.
+
+<p align="center">
+  <video src="Media/Testing 2.mp4" controls width="850"></video>
+  <br>
+  <i>If the video does not render here, open it directly:</i>
+  <a href="Media/Testing%202.mp4">Testing 2 (MP4)</a>
 </p>
 
 ---
