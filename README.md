@@ -343,6 +343,6 @@ A functional digital weigh scale was successfully implemented using a load cell 
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+This project is licensed under the [MIT LICENSE](LICENSE).
 
 ---
