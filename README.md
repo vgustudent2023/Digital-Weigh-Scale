@@ -143,15 +143,17 @@ The firmware uses the following constructor mappings:
 - `HX711_ADC LoadCell(A0, A1);`  → **DOUT = A0**, **SCK = A1**
 - `Led4digit74HC595 disp(A5, A4, A3);` → **SCLK = A5**, **RCLK = A4**, **DIO = A3**
 
-| Module | Signal | Arduino Pin |
-|---|---|---:|
-| HX711 | DOUT (DT) | A0 |
-| HX711 | SCK | A1 |
-| 4-digit display | DIO | A3 |
-| 4-digit display | RCLK | A4 |
-| 4-digit display | SCLK | A5 |
-| All modules | VCC | 5V |
-| All modules | GND | GND |
+| Module         | Signal    | Arduino Pin |
+|----------------|-----------|------------:|
+| HX711          | DOUT (DT) | A0          |
+| HX711          | SCK       | A1          |
+| 4-digit display| DIO       | A3          |
+| 4-digit display| RCLK      | A4          |
+| 4-digit display| SCLK      | A5          |
+| HX711          | VCC       | 3.3V        |
+| 4-digit display| VCC       | 5V          |
+| All modules    | GND       | GND         |
+
 
 > **Note:** Load cell wire colors can vary by manufacturer. Many common load cells use:
 > - Red = E+, Black = E-, Green = A+, White = A-  
