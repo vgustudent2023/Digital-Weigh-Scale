@@ -256,8 +256,6 @@ This test demonstrates the **final assembled scale**, including the enclosure, d
 <p align="center">
   <video src="Media/Testing.mp4" controls width="850"></video>
   <br>
-  <i>If the video does not render here, open it directly:</i>
-  <a href="Media/Testing.mp4">Testing 1 (MP4)</a>
 </p>
 
 ---
@@ -269,8 +267,6 @@ This test shows the **barebone build** (electronics and mechanical platform) bef
 <p align="center">
   <video src="Media/Testing 2.mp4" controls width="850"></video>
   <br>
-  <i>If the video does not render here, open it directly:</i>
-  <a href="Media/Testing%202.mp4">Testing 2 (MP4)</a>
 </p>
 
 ---
