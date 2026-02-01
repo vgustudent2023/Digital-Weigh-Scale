@@ -22,11 +22,16 @@
   - [3.1 Load Cell (Wheatstone Bridge)](#31-load-cell-wheatstone-bridge)
   - [3.2 HX711 24-bit ADC + PGA](#32-hx711-24-bit-adc--pga)
   - [3.3 4-Digit Display via 74HC595](#33-4-digit-display-via-74hc595)
-- [Wiring](#wiring)
-- [Build notes (mechanical)](#build-notes-mechanical)
-- [Firmware](#firmware)
-- [Calibration & tare](#calibration--tare)
-- [Testing & results](#testing--results)
+- [4. Hardware Design](#4-hardware-design)
+  - [4.1 Bill of Materials](#41-bill-of-materials)
+  - [4.2 Wiring](#42-wiring)
+  - [4.3 Mechanical Construction](#43-mechanical-construction)
+- [5. Firmware](#5-firmware)
+  - [5.1 Dependencies](#51-dependencies)
+  - [5.2 Runtime behavior](#52-runtime-behavior)
+  - [5.3 Calibration and Tare](#53-calibration-and-tare)
+  - [5.4 Display Range](#54-display-range)
+- [6. Testing & results](#testing--results)
 - [Troubleshooting](#troubleshooting)
 - [Limitations & improvements](#limitations--improvements)
 - [Repository structure](#repository-structure)
@@ -48,7 +53,7 @@ This mini project focuses on:
 - implementing tare and calibration procedures.
 
 <p align="center">
-  <img src="Media/Model.jpg" alt="Digital weigh scale model" width="750">
+  <img src="Media/Model.jpg" width="500">
 </p>
 
 ---
@@ -90,12 +95,17 @@ Arduino Uno (processing, tare, calibration)
 
 A typical bar-type load cell contains strain gauges configured as a **Wheatstone bridge**. When force is applied, the bridge becomes unbalanced, producing a small differential output voltage (often only millivolts). This signal is too small to measure accurately using the Arduino’s built-in ADC without amplification.
 
+<p align="center">
+  <img src="Media/load-cell-setup-scale-wheatstone-bridge.jpg" width="750">
+</p>
+
 ### 3.2 HX711 24-bit ADC + PGA
 
 The HX711 is designed for weigh scales and provides:
 - a low-noise **PGA** (to amplify the bridge signal),
 - a **24-bit ADC** to digitize the amplified signal,
 - a simple two-wire interface: **DOUT (DT)** and **SCK**.
+
 
 ### 3.3 4-Digit Display via 74HC595
 
@@ -108,12 +118,12 @@ The display is refreshed continuously in software (multiplexing).
 
 ---
 
-## Hardware
+## 4 Hardware Design
 
-### Bill of Materials (BOM)
+### 4.1 Bill of Materials
 
 - Arduino Uno (or compatible)
-- Bar-type strain gauge **load cell** (project platform label shows **10 kg**)
+- Bar-type strain gauge **load cell** (10-kg)
 - **HX711** load-cell amplifier/ADC module
 - 4-digit 7-segment LED module (74HC595 driver)
 - Platform plates (acrylic), standoffs/spacers, fasteners
@@ -127,7 +137,7 @@ The display is refreshed continuously in software (multiplexing).
 
 ---
 
-## Wiring
+## 4.2 Wiring
 
 ### Pin mapping (matches the firmware)
 
@@ -136,15 +146,17 @@ From [`Source Code/digital_weigh_scale.ino`](Source%20Code/digital_weigh_scale.i
 - `HX711_ADC LoadCell(A0, A1);`  → **DOUT/DT = A0**, **SCK = A1**
 - `Led4digit74HC595 disp(A5, A4, A3);` → **SCLK = A5**, **RCLK = A4**, **DIO = A3**
 
-| Module | Signal | Arduino Uno |
-|---|---|---:|
-| HX711 | DT (DOUT) | A0 |
-| HX711 | SCK | A1 |
-| 4-digit display | DIO | A3 |
-| 4-digit display | RCLK (latch) | A4 |
-| 4-digit display | SCLK (shift clk) | A5 |
-| HX711 + display | VCC | 5V |
-| HX711 + display | GND | GND |
+| Module         | Signal    | Arduino Pin |
+|----------------|-----------|------------:|
+| HX711          | DOUT (DT) | A0          |
+| HX711          | SCK       | A1          |
+| 4-digit display| DIO       | A3          |
+| 4-digit display| RCLK      | A4          |
+| 4-digit display| SCLK      | A5          |
+| HX711          | VCC       | 3.3V        |
+| 4-digit display| VCC       | 5V          |
+| All modules    | GND       | GND         |
+
 
 ### Schematic
 
@@ -171,7 +183,7 @@ Always verify against your load cell’s label or the HX711 board markings.
 
 ---
 
-## Build notes (mechanical)
+## 4.3 Mechanical Construction
 
 Bar load cells measure bending. The platform must apply force so the sensing region flexes consistently.
 
@@ -206,9 +218,9 @@ Additional views of the platform/load cell used:
 
 ---
 
-## Firmware
+## 5. Firmware
 
-### Dependencies
+### 5.1 Dependencies
 
 Two Arduino libraries are included as ZIPs in `Libraries/`:
 
@@ -219,7 +231,7 @@ Two Arduino libraries are included as ZIPs in `Libraries/`:
 
 - `Source Code/digital_weigh_scale.ino`
 
-### Runtime behavior
+### 5.2 Runtime behavior
 
 - The display is refreshed continuously (`disp.loopShow()`), while the HX711 is updated (`LoadCell.update()`).
 - Every ~100 ms the firmware:
@@ -237,16 +249,16 @@ Two Arduino libraries are included as ZIPs in `Libraries/`:
 
 ---
 
-## Calibration & tare
+### 5.3 Calibration and Tare
 
 Open **Serial Monitor** at **115200 baud**.
 
-### Tare
+**Tare**
 
 - Command: `t`
 - Effect: sets the current platform load as zero.
 
-### Calibration
+**Calibration**
 
 - Command: `c <grams>` (example: `c 205`)
 - Steps:
@@ -262,7 +274,7 @@ $$
 
 > The updated factor is applied immediately, but it is **not saved permanently**. If you want it to persist, copy the printed value into `calFactor` in the sketch (or store it in EEPROM as an upgrade).
 
-### Display range / clamping
+### 5.4 Display Range
 
 Because the display has 4 digits:
 
@@ -277,7 +289,7 @@ Because the display has 4 digits:
 
 ---
 
-## Testing & results
+## 6. Testing & results
 
 Two test videos are included in the repository:
 
@@ -286,7 +298,7 @@ Two test videos are included in the repository:
 
 ---
 
-## Troubleshooting
+## 8. Troubleshooting
 
 - **Reading is negative or unstable**
   - Re-check load cell wiring order on HX711 (A+/A− swapped can invert sign).
