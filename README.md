@@ -322,17 +322,15 @@ https://github.com/user-attachments/assets/e0507cb5-721e-42f1-afa9-c01b4bde0f44
   - Check that `disp.loopShow()` is called frequently (it is in `loop()`).
 
 - **Current limitations**
-
-- Calibration factor is not saved across resets.
-- Display limited to **0–9999 g**.
-- Mechanical rigidity and vibration strongly affect repeatability.
+  - Calibration factor is not saved across resets.
+  - Display limited to **0–9999 g**.
+  - Mechanical rigidity and vibration strongly affect repeatability.
 
 - **Suggested improvements**
-
-- Store calibration and tare offset in **EEPROM**.
-- Add digital filtering (moving average / median) and a stability indicator.
-- Add push buttons for **tare** and **calibrate** (standalone operation).
-- Improve enclosure/platform rigidity for better repeatability.
+  - Store calibration and tare offset in **EEPROM**.
+  - Add digital filtering (moving average / median) and a stability indicator.
+  - Add push buttons for **tare** and **calibrate** (standalone operation).
+  - Improve enclosure/platform rigidity for better repeatability.
 
 ---
 
