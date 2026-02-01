@@ -31,12 +31,10 @@
   - [5.2 Runtime behavior](#52-runtime-behavior)
   - [5.3 Calibration and Tare](#53-calibration-and-tare)
   - [5.4 Display Range](#54-display-range)
-- [6. Testing & results](#testing--results)
-- [Troubleshooting](#troubleshooting)
-- [Limitations & improvements](#limitations--improvements)
-- [Repository structure](#repository-structure)
+- [6. Testing and Results](#6-testing-and-results)
+- [7. Discussion](#7-discussion)
+- [8. Conclusion](#8-conclusion)
 - [License](#license)
-- [Media gallery](#media-gallery)
 
 ---
 
@@ -289,16 +287,25 @@ Because the display has 4 digits:
 
 ---
 
-## 6. Testing & results
+## 6. Testing and Results
 
-Two test videos are included in the repository:
+### Testing 1 — Final Product (with cardboard enclosure)
 
-- [Testing.mp4](Media/Testing.mp4) — final product with enclosure
-- [Testing 2.mp4](Media/Testing%202.mp4) — barebone prototype
+This test demonstrates the **final assembled scale**, including the enclosure, display, and platform.
+
+https://github.com/user-attachments/assets/28ee54c3-7f35-4fcb-858e-3b336b56dafa
 
 ---
 
-## 8. Troubleshooting
+### Testing 2 — Barebone Prototype (no cardboard enclosure)
+
+This test shows the **barebone build** (electronics and mechanical platform) before enclosing the system.
+
+https://github.com/user-attachments/assets/e0507cb5-721e-42f1-afa9-c01b4bde0f44
+
+---
+
+## 7. Discussion
 
 - **Reading is negative or unstable**
   - Re-check load cell wiring order on HX711 (A+/A− swapped can invert sign).
@@ -313,10 +320,6 @@ Two test videos are included in the repository:
 - **Display not updating / flickering**
   - Confirm display pins: DIO → A3, RCLK → A4, SCLK → A5.
   - Check that `disp.loopShow()` is called frequently (it is in `loop()`).
-
----
-
-## Limitations & improvements
 
 **Current limitations**
 
@@ -333,15 +336,8 @@ Two test videos are included in the repository:
 
 ---
 
-## Repository structure
-
-- `Source Code/`
-  - `digital_weigh_scale.ino` — Arduino sketch
-- `Libraries/`
-  - `HX711_ADC-master.zip`
-  - `Led4digit74HC595-master.zip`
-- `Media/`
-  - Photos + schematic + test videos
+## 8. Conclusion
+A functional digital weigh scale was successfully implemented using a load cell and HX711 module for precision measurement, and a 4-digit 7-segment display driven via 74HC595 shift registers for output. The firmware supports real-time display, serial monitoring, tare, and calibration, providing a complete demonstration of practical measurement system design suitable for further enhancement.
 
 ---
 
